@@ -1,0 +1,113 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+
+<mapper namespace="egovframework.upa.restController.unct.UnctMapper">
+
+	<!-- 본선작업현황조회 -->
+	<select id="selectVesselStatus" resultType="String">
+	select TOS.PKG_UPA_INTERFACE.IF_ITT_TIS_002() FROM DUAL
+	</select>
+
+	<!-- 선석배정현황조회 -->
+	<select id="selectAbsAsignList" resultType="String" parameterType="map">
+	select TOS.PKG_UPA_INTERFACE.IF_ITT_TIS_001(#{sDate}, #{eDate}, #{in_tmrVoy} ,#{tmrYear})
+	FROM DUAL
+	</select>
+
+	<!-- 양적하목록조회 -->
+	<select id="selectVesselLoadList" resultType="String" parameterType="map">
+	select TOS.PKG_UPA_INTERFACE.IF_ITT_TIS_003(#{vslVoy}, #{disLoad}, #{cntrNo}) 
+	FROM DUAL
+	</select>
+	
+	<!-- CLL야드비교조회 -->
+	<select id="selectCllYard" resultType="String" parameterType="map">
+	select TOS.PKG_UPA_INTERFACE.IF_ITT_TIS_004(#{terminalShipVoyageNo}, #{conNo}) 
+	FROM DUAL
+	</select>
+	
+	<!-- 미반입목록조회 -->
+	<select id="selectNotGateIn" resultType="String" parameterType="map">
+	select TOS.PKG_UPA_INTERFACE.IF_ITT_TIS_005(#{terminalShipVoyageNo}, #{shippingCode}) 
+	FROM DUAL
+	</select>
+	
+	<!-- 과반입목록조회 -->
+	<select id="selectOverGateIn" resultType="String" parameterType="map">
+	select TOS.PKG_UPA_INTERFACE.IF_ITT_TIS_006(#{terminalShipVoyageNo}, #{shippingCode}) 
+	FROM DUAL
+	</select>
+	
+	<!-- 선적취소목록조회 -->
+	<select id="selectCancleShipping" resultType="String" parameterType="map">
+	select TOS.PKG_UPA_INTERFACE.IF_ITT_TIS_007(#{terminalShipVoyageNo}, #{shippingCode}) 
+	FROM DUAL
+	</select>
+	
+	<!-- 반출입물량조회 -->
+	<select id="selectGateIO" resultType="String" parameterType="map">
+	select TOS.PKG_UPA_INTERFACE.IF_ITT_TIS_008(#{terminalShipVoyageNo}, #{shippingCode}) 
+	FROM DUAL
+	</select>
+	
+	<!-- 반출입진행조회 -->
+	<select id="selectGateIOStatus" resultType="String" parameterType="String">
+	select TOS.PKG_UPA_INTERFACE.IF_ITT_TIS_009(#{truckNo})
+	FROM DUAL
+	</select>
+	
+	<!-- 컨테이너정보조회 -->
+	<select id="selectContainerInfo" resultType="String" parameterType="map">
+	select TOS.PKG_UPA_INTERFACE.IF_ITT_TIS_011(#{conNo}) 
+	FROM DUAL
+	</select>
+	
+	<!-- Empty컨테이너현황조회 -->
+	<select id="selectEmptyContainerStatus" resultType="String" parameterType="String">
+	select TOS.PKG_UPA_INTERFACE.IF_ITT_TIS_012(#{shippingCode}) 
+	FROM DUAL
+	</select>
+	
+	<!-- Booking조회 -->
+	<select id="selectBookingList" resultType="String" parameterType="map">
+	select TOS.PKG_UPA_INTERFACE.IF_ITT_TIS_013(#{bookingNo}) 
+	FROM DUAL
+	</select>
+	
+	<!-- 사전반출입조회 -->
+	<select id="selectCopinoList" resultType="String" parameterType="map">
+	select TOS.PKG_UPA_INTERFACE.IF_ITT_TIS_014(#{cntrNO}, #{truckNO}) 
+	FROM DUAL
+	</select>
+	
+	<!-- 모선코드조회 -->
+	<select id="selectTerminalShipCode" resultType="String" parameterType="map">
+	select TOS.PKG_UPA_INTERFACE.IF_ITT_TIS_017(#{terminalShipCode}) 
+	FROM DUAL
+	</select>
+	
+	<!-- 터미널혼잡도조회 -->
+	<select id="selectTmlCongestionList" resultType="String">
+	select TOS.PKG_UPA_INTERFACE.IF_ITT_TIS_018() 
+	FROM DUAL
+	</select>
+	
+	<!-- 공지사항조회 -->
+	<select id="selectAnnouncement" resultType="String">
+	select TOS.PKG_UPA_INTERFACE.IF_ITT_TIS_019() 
+	FROM DUAL
+	</select>
+	
+	<!-- 위험물 컨테이너 신고조회 -->
+	<select id="selectDangerContainerList" resultType="String" parameterType="map">
+	select TOS.PKG_UPA_INTERFACE.IF_ITT_TIS_022(#{terminalShipVoyageNo}, #{conNo}) 
+	FROM DUAL
+	</select>
+	
+	<!-- 컨테이너 위치조회 -->
+	<select id="selectContainerLoc" resultType="String" parameterType="String">
+	select TOS.PKG_UPA_INTERFACE.IF_ITT_TIS_023(#{conNoList}) 
+	FROM DUAL
+	</select>
+
+</mapper>
